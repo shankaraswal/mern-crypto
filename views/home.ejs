@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+</head>
+
+<body class="addUser">
+    <% include partials/nav %>
+    <div class="container">
+        <div class="jumbotron ">
+            <h1 class="display-4 ">Home!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style
+                component for calling extra attention to
+                featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.
+            </p>
+
+            <% if(success != ''){%>
+            <div class="alert alert-success mt-4" role="alert"><%= success %></div>
+            <% }%>
+
+            <div class="pb-4">
+                <form id="myForm" class="col-sm-12 alert alert-success border border-success" action="">
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fname">First Name</label>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Email Address">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">Phone Number</label>
+                            <input type="number" class="form-control" id="phone" name="phone"
+                                placeholder="Phone Number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="city">City</label>
+                            <input type="text" name="city" class="form-control" id="city">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="state">State</label>
+                            <select id="state" name="state" class="form-control">
+                                <option selected>Choose...</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="UP">UP</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Rajsthan">Rajsthan</option>
+                                <option value="Goa">Goa</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="zip">Zip</label>
+                            <input type="number" class="form-control" name="zip" id="zip">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <div class="form-check">
+                                <input class="form-check-input" checked name="check" type="checkbox" id="check">
+                                <label class="form-check-label" for="check">
+                                    Check me out
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit">Add Record</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <% userdata.forEach(item=>{ 
+            if(item){%>
+                <div class="col-md-4">
+                    <div class="card border border-default mb-3" id='<%= item._id %>'>
+                        <h5 class="card-header"><%= item.fname %> <%= item.lname %></h5>
+
+                        <div class="card-body text-default">
+                            <p>Email: <%= item.email %> <br />
+                                Phone: <%= item.phone %> <br />
+                                City: <%= item.city %> <br />
+                                State: <b class="text-danger"><%= item.state %> </b><br />
+                                Zipcode: <%= item.zip %> <br />
+                                Status: <%= item.check %> </p>
+                        </div>
+                        <div class="card-footer text-center bg-transparent border-default">
+                            <a href="/userdetail/<%= item.id %>" class="btn btn-success text-white btn-sm">Detail</a>
+                            <a href="/edituser/<%= item.id %>" class="btn btn-info text-white btn-sm">Edit</a>
+                            <a onclick="deleteMe('<%= item.id %>')" class="btn text-white btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <%  }   
+            })   %>
+            </div>
+        </div>
+    </div>
+    <% include partials/footer %>
+
+    <script src="/js.js"></script>
+
+</body>
+
+</html>

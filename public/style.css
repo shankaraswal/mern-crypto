@@ -1,0 +1,5 @@
+body {
+    background: #ddd;
+}
+.uppercase{ text-transform: uppercase}
+.jumbotron{margin-bottom: 0}

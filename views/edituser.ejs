@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+
+</head>
+
+<body class="editUser">
+    <% include partials/nav %>
+    <div class="container ">
+        <div class="jumbotron">
+            <h1 class="display-4 uppercase text-info"><%= title %></h1>
+
+
+            <hr class="my-4">
+            <div class="">
+                    <form id="updateForm" class="col-sm-12 alert alert-info border border-default" >
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="userid">Record Id</label>
+                                <input type="text" class="form-control" id="userid" readonly name="userid" value="<%= userdata._id %>">
+                            </div>
+                        </div>
+                                
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="fname">First Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" value="<%= userdata.fname %>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lname">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname" value="<%= userdata.lname %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                value="<%= userdata.email %>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="phone">Phone Number</label>
+                                <input type="number" class="form-control" id="phone" name="phone"
+                                value="<%= userdata.phone %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="city">City</label>
+                                <input type="text" name="city" class="form-control" id="city" value="<%= userdata.city %>">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="state">State</label>
+                                <select id="state" name="state" class="form-control">
+                                    <option value="">Choose...</option>
+                                    <option value="DL">Delhi</option>
+                                    <option value="UP">UP</option>
+                                    <option value="HR">Haryana</option>
+                                </select>
+                                <script>
+                                
+                                </script>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="zip">Zip</label>
+                                <input type="number" class="form-control" name="zip" id="zip" value="<%= userdata.zip %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" <%= isChecked %> name="check" type="checkbox" id="check" >
+                                    <label class="form-check-label" for="check">
+                                        Check me out
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-info" type="submit">Update Record</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            <!-- /.row -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <% include partials/footer %>
+    <script src="/js.js"></script>
+
+
+</body>
+
+</html>
